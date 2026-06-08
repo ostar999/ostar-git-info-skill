@@ -7,40 +7,22 @@ Display a complete Git branch hierarchy tree. Every branch name must be visible 
 ## 功能 / Features
 
 - 完整展示所有本地分支的层级拓扑关系
-- 显示各分支最新 commit 的短哈希和提交说明
+- 显示各分支最新 commit 的短哈希
 - 标注 HEAD 当前指向和 tag 标签
 - 支持 **标准模式**（完整缩进树）和 **紧凑模式**（合并单链，用 `→` 连接）
-- 纯 Python 3，无第三方依赖
+- Node.js 版（主力）| Python 3 版（备用，main 分支）
 
 ## 使用方法 / Usage
 
 ```bash
-# 在当前目录运行
-python3 scripts/git_branch_tree.py
+# JS 版（推荐，零依赖）
+node scripts/git_branch_tree.js [repo_path]
 
-# 指定仓库路径
-python3 scripts/git_branch_tree.py /path/to/repo
+# Python 版（python3 备用）
+python3 scripts/git_branch_tree.py [repo_path]
 
-# 紧凑模式（折叠单子分支链）
-python3 scripts/git_branch_tree.py --compact
-
-# 指定路径 + 紧凑模式
-python3 scripts/git_branch_tree.py /path/to/repo --compact
-```
-
-## 示例输出 / Example Output
-
-```
-Git Branch Tree — my-project
-Commits: 42  Branches: 5
-Tags: ★ v1.0(abc1234)
-
-abc1234  Initial commit
-├ feature-login (def5678) ←HEAD(feature-login)
-│ ├ fix-login-css (ghi9012)
-│ └ add-oauth (jkl3456)
-├ feature-dashboard (mno7890)
-└ hotfix-crash (pqr1234)
+# 紧凑模式
+node scripts/git_branch_tree.js --compact [repo_path]
 ```
 
 ## 作为 Claude Code Skill 使用 / Use as Claude Code Skill
@@ -53,14 +35,15 @@ abc1234  Initial commit
 ostar-git-info/
 ├── SKILL.md                    # Skill 定义
 ├── scripts/
-│   └── git_branch_tree.py      # 核心脚本
+│   ├── git_branch_tree.js      # 核心脚本（Node.js）
+│   └── git_branch_tree.py      # 核心脚本（Python 备用）
 ├── README.md
 └── LICENSE
 ```
 
 ## 依赖 / Dependencies
 
-- Python 3.6+
+- Node.js（推荐）或 Python 3.6+
 - Git
 
 ## 许可 / License
