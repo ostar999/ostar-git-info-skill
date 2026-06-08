@@ -13,7 +13,7 @@ description: |
 直接运行脚本，完整输出，不做任何总结。
 
 ```bash
-python3 <skill_dir>/scripts/git_branch_tree.py [repo_path]
+node <skill_dir>/scripts/git_branch_tree.js [repo_path]
 ```
 
 关键规则：原样展示每一行。绝不用 "..." 替代任何分支名。
